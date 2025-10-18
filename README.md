@@ -33,7 +33,7 @@ Invoke-RestMethod -Uri "http://127.0.0.1:8000/health" -Method GET
 
 ---
 
-##📦 Example API Calls
+## 📦 Example API Calls
 
 1. Place a Buy Order
 
@@ -65,21 +65,21 @@ Invoke-RestMethod -Uri "http://127.0.0.1:8000/orders/<order_id>" -Method GET
 
 ---
 
-##🔌 WebSocket Endpoints
+## 🔌 WebSocket Endpoints
 
-###📡 Live Trades
+### 📡 Live Trades
 
 ```arduino
 ws://127.0.0.1:8000/ws/trades
 ```
 
-###📘 Order Book Snapshots
+### 📘 Order Book Snapshots
 
 ```ruby
 ws://127.0.0.1:8000/ws/book/PROD1
 ```
 
-###🧪 Run Local Test Clients
+### 🧪 Run Local Test Clients
 
 ```powershell
 python .\app\test_ws.py
