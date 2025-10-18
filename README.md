@@ -29,6 +29,7 @@ Check Health:
  
 ```powershell
 Invoke-RestMethod -Uri "http://127.0.0.1:8000/health" -Method GET
+```
 
 ---
 
@@ -40,6 +41,7 @@ Invoke-RestMethod -Uri "http://127.0.0.1:8000/health" -Method GET
 Invoke-RestMethod -Uri "http://127.0.0.1:8000/orders" `
 -Method POST -Body '{"product_id":"PROD1","side":1,"price":120.0,"qty":5}' `
 -ContentType "application/json"
+```
 
 2. Place a Sell Order
 
@@ -47,49 +49,54 @@ Invoke-RestMethod -Uri "http://127.0.0.1:8000/orders" `
 Invoke-RestMethod -Uri "http://127.0.0.1:8000/orders" `
 -Method POST -Body '{"product_id":"PROD1","side":-1,"price":115.0,"qty":3}' `
 -ContentType "application/json"
+```
 
 3. View All Trades
 
 ```powershell
 Invoke-RestMethod -Uri "http://127.0.0.1:8000/trades" -Method GET
+```
 
 4. Fetch an Order
 
 ```powershell
 Invoke-RestMethod -Uri "http://127.0.0.1:8000/orders/<order_id>" -Method GET
+```
 
 ---
 
 ##🔌 WebSocket Endpoints
 
-
 ###📡 Live Trades
 
 ```arduino
 ws://127.0.0.1:8000/ws/trades
+```
 
 ###📘 Order Book Snapshots
 
 ```ruby
 ws://127.0.0.1:8000/ws/book/PROD1
+```
 
 ###🧪 Run Local Test Clients
 
 ```powershell
 python .\app\test_ws.py
 python .\app\test_trades_ws.py
+```
 
 ---
 
 ## 🧩 Persistence Details
 
 
-|File                  |Purpose                                                                       |
-|----------------------|------------------------------------------------------------------------------|
+|File                  |Purpose                                                                    |
+|----------------------|--------------------------------------------------------------------------|
 |data/wal.log	       | Write-Ahead Log of all events (place/modify/cancel/trade)                    |
 |data/snapshot.json    | Snapshot for faster recovery                                                 |
 |Background Task       | Saves a snapshot every 30 seconds                                            |
-|On Startup	       | Restores snapshot → replays WAL → rebuilds heaps → rematches crossable orders|
+|On Startup	           | Restores snapshot → replays WAL → rebuilds heaps → rematches crossable orders|
 
 ---
 
@@ -101,11 +108,13 @@ python .\app\test_trades_ws.py
 
 ```powershell
 docker compose up -d --build
+```
 
 ### Check Containers
 
 ```powershell
 docker compose ps
+```
 
 
 ### You should see:
@@ -118,11 +127,13 @@ orderapi-matcher-1   Up  (port 9000)
 ```powershell
 docker compose logs api --tail 50
 docker compose logs matcher --tail 50
+```
 
 ### Stop
 
 ```powershell
 docker compose down
+```
 
 ---
 
@@ -171,6 +182,7 @@ docker compose down
 Invoke-RestMethod -Uri "http://127.0.0.1:8000/orders" `
 -Method POST -Body '{"product_id":"PROD1","side":1,"price":220.0,"qty":1}' `
 -ContentType "application/json"
+```
 
 ### Place a matching sell
 
@@ -178,11 +190,13 @@ Invoke-RestMethod -Uri "http://127.0.0.1:8000/orders" `
 Invoke-RestMethod -Uri "http://127.0.0.1:8000/orders" `
 -Method POST -Body '{"product_id":"PROD1","side":-1,"price":220.0,"qty":1}' `
 -ContentType "application/json"
+```
 
 ### View trades
 
 ```powershell
 Invoke-RestMethod -Uri "http://127.0.0.1:8000/trades" -Method GET
+```
 
 ---
 
