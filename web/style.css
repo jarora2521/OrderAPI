@@ -1,0 +1,17 @@
+﻿body{font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial; margin:0; padding:20px; background:#f7f7f8; color:#111}
+main{max-width:960px;margin:0 auto}
+h1{margin:0 0 10px}
+.box{background:#fff;padding:16px;border-radius:8px;margin:12px 0;box-shadow:0 1px 2px rgba(0,0,0,0.04)}
+.split{display:flex;gap:16px}
+.split > div{flex:1}
+label{display:block;margin:6px 0;font-size:14px}
+input,select,button{padding:8px;border-radius:6px;border:1px solid #ddd}
+button{cursor:pointer;background:#0366d6;color:#fff;border:none}
+.list{max-height:220px;overflow:auto}
+.trade{padding:6px;border-bottom:1px solid #eee}
+.trade.live{background:#e9f5ff}
+.book{display:flex;gap:12px}
+.book ol{padding-left:18px;margin:0}
+.muted{color:#666;margin-top:8px}
+.raw{background:#0f1720;color:#e6e8eb;padding:8px;border-radius:6px;max-height:240px;overflow:auto}
+footer{margin-top:12px;color:#666;font-size:13px}

@@ -1,0 +1,68 @@
+﻿{
+  "info": {
+    "name": "OrderAPI - Quick Collection",
+    "_postman_id": "orderapi-collection",
+    "description": "Basic requests for the OrderAPI (place/modify/cancel/get/orders/trades/health).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": { "raw": "http://127.0.0.1:8000/health", "protocol": "http", "host": ["127.0.0.1"], "port": "8000", "path": ["health"] }
+      }
+    },
+    {
+      "name": "Place Order",
+      "request": {
+        "method": "POST",
+        "header": [{ "key":"Content-Type","value":"application/json" }],
+        "body": { "mode": "raw", "raw": "{ \"product_id\":\"PROD1\", \"side\":1, \"price\":120.0, \"qty\":1 }" },
+        "url": { "raw": "http://127.0.0.1:8000/orders", "protocol": "http", "host": ["127.0.0.1"], "port":"8000","path":["orders"] }
+      }
+    },
+    {
+      "name": "Modify Order",
+      "request": {
+        "method": "PUT",
+        "header": [{ "key":"Content-Type","value":"application/json" }],
+        "body": { "mode": "raw", "raw": "{ \"price\": 125.0 }" },
+        "url": { "raw": "http://127.0.0.1:8000/orders/:order_id", "protocol":"http","host":["127.0.0.1"],"port":"8000","path":["orders",":order_id"] }
+      }
+    },
+    {
+      "name": "Cancel Order",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": { "raw": "http://127.0.0.1:8000/orders/:order_id", "protocol":"http","host":["127.0.0.1"],"port":"8000","path":["orders",":order_id"] }
+      }
+    },
+    {
+      "name": "Get Order",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": { "raw": "http://127.0.0.1:8000/orders/:order_id", "protocol":"http","host":["127.0.0.1"],"port":"8000","path":["orders",":order_id"] }
+      }
+    },
+    {
+      "name": "List Orders",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": { "raw": "http://127.0.0.1:8000/orders", "protocol":"http","host":["127.0.0.1"],"port":"8000","path":["orders"] }
+      }
+    },
+    {
+      "name": "List Trades",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": { "raw": "http://127.0.0.1:8000/trades", "protocol":"http","host":["127.0.0.1"],"port":"8000","path":["trades"] }
+      }
+    }
+  ]
+}

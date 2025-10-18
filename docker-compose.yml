@@ -1,0 +1,28 @@
+﻿version: "3.8"
+
+services:
+  api:
+    build: .
+    image: orderapi:latest
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./:/home/appuser/app
+      - ./data:/home/appuser/app/data
+    environment:
+      - MATCHER_URL=http://matcher:9000/events
+
+  matcher:
+    build: .
+    image: orderapi:latest
+    command: python -m services.matcher.main
+    ports:
+      - "9000:9000"
+    volumes:
+      - ./:/home/appuser/app
+      - ./data:/home/appuser/app/data
+    environment:
+      - PYTHONUNBUFFERED=1
+    depends_on:
+      - api
