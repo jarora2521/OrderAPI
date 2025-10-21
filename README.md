@@ -249,7 +249,7 @@ This project implements a complete limit order book system using FastAPI (Python
 
 ## 👩‍💻 Author
 
-Jivika Arora
+Jeevika Arora
 
 ---
 
